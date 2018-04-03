@@ -1,22 +1,21 @@
 package com.xlbs.nettyservice.client;
 
-import com.xlbs.nettyservice.IClientWrite;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
 public class ClientDataChannelHandler extends ChannelInboundHandlerAdapter {
 
-	private IClientWrite iclient;
+	private IClient iclient;
 	
-	public ClientDataChannelHandler(IClientWrite iclient){
+	public ClientDataChannelHandler(IClient iclient){
 		this.iclient = iclient;
 	}
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
-		System.out.println("客户端连接成功");
 		iclient.setCtx(ctx);
+		System.out.println("客户端连接成功");
 		super.channelActive(ctx);
 	}
 
@@ -35,8 +34,8 @@ public class ClientDataChannelHandler extends ChannelInboundHandlerAdapter {
 	}
 	
 	@Override
+	//channel失效处理,客户端下线或者强制退出等任何情况都触发这个方法
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-	    //channel失效处理,客户端下线或者强制退出等任何情况都触发这个方法
 	    super.channelInactive(ctx);
     }
 
@@ -51,11 +50,11 @@ public class ClientDataChannelHandler extends ChannelInboundHandlerAdapter {
 		iclient.recvMsg(body);
 	}
 
-	public IClientWrite getIclient() {
+	public IClient getIclient() {
 		return iclient;
 	}
 
-	public void setIclient(IClientWrite iclient) {
+	public void setIclient(IClient iclient) {
 		this.iclient = iclient;
 	}
 

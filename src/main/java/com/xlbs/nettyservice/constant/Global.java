@@ -11,7 +11,7 @@ public class Global {
 
     public static final  String ip = "127.0.0.1";
 
-    public static ConcurrentHashMap<Integer, ChannelHandlerContext> ctxs ;
+    public static ConcurrentHashMap<Integer, ChannelHandlerContext> ctxs = new ConcurrentHashMap<>() ;
 
 
 

@@ -1,4 +1,4 @@
-package com.xlbs.nettyservice;
+package com.xlbs.nettyservice.openinterface;
 
 public interface IBusniss {
 

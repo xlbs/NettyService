@@ -1,6 +1,5 @@
 package com.xlbs.nettyservice.client;
 
-import com.xlbs.nettyservice.IClientWrite;
 import com.xlbs.nettyservice.constant.Global;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -13,7 +12,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 
 public class NettyClient {
 
-    private IClientWrite iclient;
+    private IClient iclient;
     
     EventLoopGroup group = new NioEventLoopGroup();
 
@@ -35,11 +34,11 @@ public class NettyClient {
         }
     }
     
-	public IClientWrite getIclient() {
+	public IClient getIclient() {
 		return iclient;
 	}
 	
-	public void setIclient(IClientWrite iclient) {
+	public void setIclient(IClient iclient) {
 		this.iclient = iclient;
 	}
 	

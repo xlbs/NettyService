@@ -1,18 +1,21 @@
-package com.xlbs.nettyservice;
+package com.xlbs.nettyservice.openinterface;
 
+import com.xlbs.nettyservice.client.ClientImp;
 import com.xlbs.nettyservice.client.NettyClient;
 
-public abstract class BusnissImp implements IBusniss{
+import java.util.Calendar;
 
-	ClientWirteImp write;
+public abstract class BusnissImp implements IBusniss {
+
+	ClientImp write;
 	
 	NettyClient client;
 	
-	public abstract String getData(String str);
+	public abstract void getData(String str);
 	
 	@Override
 	public void createChannel() {
-		write = new ClientWirteImp(this);
+		write = new ClientImp(this);
 		client = new NettyClient();
 		client.setIclient(write);
 		client.createClient();
@@ -23,17 +26,18 @@ public abstract class BusnissImp implements IBusniss{
 		if(write == null){
 			createChannel();
 		}
-//		Calendar cal = Calendar.getInstance();
-//		while(Calendar.getInstance().getTimeInMillisrecvMsg() - cal.getTimeInMillis() < 5000){
-//			if(write.getCtx() != null){
-//				break;
-//			}
-//			try {
-//				Thread.sleep(100);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
+		Calendar cal = Calendar.getInstance();
+		//5s内未建立连接视为无法建立连接
+		while(Calendar.getInstance().getTimeInMillis()- cal.getTimeInMillis() < 5000){
+			if(write.getCtx() != null){
+				break;
+			}
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		if(write.getCtx() != null){
 			write.sendData(msg);
 		}else{

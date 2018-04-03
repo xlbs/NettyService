@@ -1,17 +1,16 @@
-package com.xlbs.nettyservice;
+package com.xlbs.nettyservice.client;
 
+import com.xlbs.nettyservice.openinterface.IBusniss;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 
-public class ClientWirteImp  implements IClientWrite{
+public class ClientImp implements IClient {
 
-//	private String recvStr = null;
-	
 	private ChannelHandlerContext ctx;
 	
 	private IBusniss ibus ;
 	
-	public ClientWirteImp(IBusniss ibus){
+	public ClientImp(IBusniss ibus){
 		this.ibus = ibus;
 	}
 	
@@ -19,20 +18,9 @@ public class ClientWirteImp  implements IClientWrite{
 	public void sendData(String msg) {
 		try{
 			ctx.writeAndFlush(Unpooled.copiedBuffer(msg.getBytes()));//向服务端发送数据
-//			Calendar cal = Calendar.getInstance();
-//			while(Calendar.getInstance().getTimeInMillis() - cal.getTimeInMillis() < 5000){
-//				if(recvStr != null){
-//					return recvStr;
-//				}
-//				Thread.sleep(100);
-//			}
-//			return "请求数据超时";
 		}catch(Exception  e){
 			e.printStackTrace();
 		}
-//		finally{
-//			recvStr = null;
-//		}
 	}
 
 	@Override
@@ -42,7 +30,6 @@ public class ClientWirteImp  implements IClientWrite{
 
 	@Override
 	public void recvMsg(Object msg) {
-//		recvStr =  (String) msg;
 		ibus.recvMsg((String) msg);
 	}
 
