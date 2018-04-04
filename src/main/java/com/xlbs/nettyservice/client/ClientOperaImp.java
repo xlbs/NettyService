@@ -4,13 +4,13 @@ import com.xlbs.nettyservice.openinterface.IBusniss;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 
-public class ClientImp implements IClient {
+public class ClientOperaImp implements IClientOpera {
 
 	private ChannelHandlerContext ctx;
 	
 	private IBusniss ibus ;
 	
-	public ClientImp(IBusniss ibus){
+	public ClientOperaImp(IBusniss ibus){
 		this.ibus = ibus;
 	}
 	

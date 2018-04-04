@@ -2,7 +2,7 @@ package com.xlbs.nettyservice.client;
 
 import io.netty.channel.ChannelHandlerContext;
 
-public interface IClient {
+public interface IClientOpera {
 
 	/**
 	 * 向服务端发送信息

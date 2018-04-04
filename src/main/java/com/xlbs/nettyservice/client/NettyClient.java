@@ -12,7 +12,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 
 public class NettyClient {
 
-    private IClient iclient;
+    private IClientOpera iclient;
     
     EventLoopGroup group = new NioEventLoopGroup();
 
@@ -34,11 +34,11 @@ public class NettyClient {
         }
     }
     
-	public IClient getIclient() {
+	public IClientOpera getIclient() {
 		return iclient;
 	}
 	
-	public void setIclient(IClient iclient) {
+	public void setIclient(IClientOpera iclient) {
 		this.iclient = iclient;
 	}
 	

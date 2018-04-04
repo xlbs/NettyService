@@ -1,13 +1,13 @@
 package com.xlbs.nettyservice.openinterface;
 
-import com.xlbs.nettyservice.client.ClientImp;
+import com.xlbs.nettyservice.client.ClientOperaImp;
 import com.xlbs.nettyservice.client.NettyClient;
 
 import java.util.Calendar;
 
 public abstract class BusnissImp implements IBusniss {
 
-	ClientImp write;
+	ClientOperaImp write;
 	
 	NettyClient client;
 	
@@ -15,7 +15,7 @@ public abstract class BusnissImp implements IBusniss {
 	
 	@Override
 	public void createChannel() {
-		write = new ClientImp(this);
+		write = new ClientOperaImp(this);
 		client = new NettyClient();
 		client.setIclient(write);
 		client.createClient();

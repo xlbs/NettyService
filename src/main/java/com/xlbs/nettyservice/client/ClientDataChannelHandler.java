@@ -6,9 +6,9 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 public class ClientDataChannelHandler extends ChannelInboundHandlerAdapter {
 
-	private IClient iclient;
+	private IClientOpera iclient;
 	
-	public ClientDataChannelHandler(IClient iclient){
+	public ClientDataChannelHandler(IClientOpera iclient){
 		this.iclient = iclient;
 	}
 
@@ -50,11 +50,11 @@ public class ClientDataChannelHandler extends ChannelInboundHandlerAdapter {
 		iclient.recvMsg(body);
 	}
 
-	public IClient getIclient() {
+	public IClientOpera getIclient() {
 		return iclient;
 	}
 
-	public void setIclient(IClient iclient) {
+	public void setIclient(IClientOpera iclient) {
 		this.iclient = iclient;
 	}
 
